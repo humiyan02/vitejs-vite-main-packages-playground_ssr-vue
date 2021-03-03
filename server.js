@@ -5,7 +5,10 @@ const express = require('express')
 
 const isTest = process.env.NODE_ENV === 'test' || !!process.env.VITE_TEST_BUILD
 
-async function createServer(root = process.cwd(), isProd = true) {
+async function createServer(
+  root = process.cwd(),
+  isProd = process.env.NODE_ENV === 'production',
+) {
   const resolve = (p) => path.resolve(__dirname, p)
 
   const indexProd = isProd
